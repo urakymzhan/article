@@ -1,6 +1,6 @@
 
 ### articles using redux
-> npm install
+> npm install | 
 > npm start
 
 ##### Master branch contains (hard app):
