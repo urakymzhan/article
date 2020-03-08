@@ -1,6 +1,6 @@
-import { createStore } from "redux";
+import { createStore, applyMiddleware, compose } from "redux";
 import rootReducer from '../reducers/index';
-
+import { forbiddenWordsMiddleware } from "../middleware";
 // createStore takes a reducer as the first argument
 // You may also pass an initial state to createStore, useful for server side rendering and state preloading, 
 // but for now we’re not interested in that.
@@ -14,6 +14,13 @@ import rootReducer from '../reducers/index';
 // The subscribe method accepts a callback that will fire whenever an action is dispatched. 
 // Dispatching an action means notifying the store that we intend to change the state.
 
-const store = createStore(rootReducer);
+
+// this enables redux DEV TOOLS
+const storeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const store = createStore(
+    rootReducer,
+    storeEnhancers(applyMiddleware(forbiddenWordsMiddleware))
+);
 
 export default store;
