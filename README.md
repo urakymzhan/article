@@ -1,7 +1,7 @@
 
 ### redux app
 > npm install
-> npm start
+npm start
 
 ##### Master branch contains everything (hard app):
 - redux 
