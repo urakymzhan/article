@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addArticle } from "../actions/index";
-import { render } from "react-dom";
+// import { render } from "react-dom";
 
 // Disclaimer: this project was born when React didn't have hooks yet. 
 // I could use a functional component here instead of classes.
@@ -32,7 +32,7 @@ class ConnectedForm extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         const { title } = this.state;
-        console.log( { title });
+        // console.log( { title });
         this.props.addArticle({ title });
         this.setState( { title: " "});
     }
@@ -41,7 +41,7 @@ class ConnectedForm extends Component {
         return (
             <form onSubmit={this.handleSubmit}>
                 <div>
-                    <label htmlFor="title">Title</label>
+                    <label htmlFor="title">Title </label>
                     <input
                         type="text"
                         id="title"
@@ -49,6 +49,7 @@ class ConnectedForm extends Component {
                         onChange={this.handleChange}
                         />
                 </div>
+                <br />
                 <button type="submit">SAVE</button>
             </form>
         )

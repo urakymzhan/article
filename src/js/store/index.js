@@ -1,7 +1,8 @@
 import { createStore, applyMiddleware, compose } from "redux";
 import rootReducer from '../reducers/index';
 import { forbiddenWordsMiddleware } from "../middleware";
-import thunk from "redux-thunk";
+import createSagaMiddleware from "redux-saga";
+import apiSaga from "../sagas/api-saga";
 // createStore takes a reducer as the first argument
 // You may also pass an initial state to createStore, useful for server side rendering and state preloading, 
 // but for now we’re not interested in that.
@@ -16,16 +17,19 @@ import thunk from "redux-thunk";
 // Dispatching an action means notifying the store that we intend to change the state.
 
 // Calling fetch from an action creator does not work. 
-// That's because Redux is expecting objects as actions but we're trying to return a Promise. 
-// With redux-thunk we can overcome the problem and return functions from action creators. 
-// Inside that function we can call APIs, delay the dispatch of an action, and so on.
+// createSagaMiddleware and initialiseSagaMiddleware.run for running our saga.
+
+const initialiseSagaMiddleware = createSagaMiddleware();
 
 // this enables redux DEV TOOLS
 const storeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
     rootReducer,
-    storeEnhancers(applyMiddleware(forbiddenWordsMiddleware, thunk))
+    storeEnhancers(
+        applyMiddleware(forbiddenWordsMiddleware, initialiseSagaMiddleware)
+        )
 );
+initialiseSagaMiddleware.run(apiSaga);
 
 export default store;

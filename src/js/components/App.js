@@ -6,7 +6,7 @@ import Posts from "./Posts";
 const App = () => (
   <>
     <div>
-      <h2>Articles</h2>
+      <h2 style={{color: "red"}}>Articles</h2>
       <List />
     </div>
     <div>
@@ -14,7 +14,7 @@ const App = () => (
       <Form />
     </div>
     <div>
-      <h2>API posts</h2>
+      <h2 style={{color: "green"}}>API posts</h2>
       <Posts />
     </div>
   </>
