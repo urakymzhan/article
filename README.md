@@ -7,6 +7,7 @@
 - redux 
 - react-redux
 - redux middleware
+- redux-thunk
 - redux-saga
 
 ##### before-saga branch contains (medium app):

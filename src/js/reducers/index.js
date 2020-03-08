@@ -1,4 +1,4 @@
-import { ADD_ARTICLE } from "../constants/action-types";
+import { ADD_ARTICLE, DATA_LOADED } from "../constants/action-types";
 
 // A Redux reducer is just a JavaScript function. It takes two parameters: the current state and action
 // When an action is dispatched, the store forwards a message (the action object) to the reducer.
@@ -11,7 +11,8 @@ import { ADD_ARTICLE } from "../constants/action-types";
 // - use Object.assign or object spread of objects
 
 const intialState = {
-    articles: []
+    articles: [],
+    remoteArticles: []
 };
 
 function rootReducer(state = intialState, action) {
@@ -19,7 +20,12 @@ function rootReducer(state = intialState, action) {
         return Object.assign({}, state, {
             articles: state.articles.concat(action.payload)
         }) 
-    }   
+    }
+    if (action.type === DATA_LOADED) {
+        return Object.assign({}, state, {
+            remoteArticles: state.remoteArticles.concat(action.payload)
+        })
+    }  
     return state;
 };
 
