@@ -1,5 +1,5 @@
 
-### redux app
+### articels using redux
 > npm install
 > npm start
 
