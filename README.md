@@ -3,16 +3,9 @@
 > npm install
 > npm start
 
-##### Master branch contains everything (hard app):
+##### Master branch contains (hard app):
 - redux 
 - react-redux
-- redux middleware
-- redux-thunk
-- redux-saga
-
-##### after-saga branch contains (medium to hard app):
-- redux 
-- react-redux 
 - redux middleware
 - redux-saga
 
